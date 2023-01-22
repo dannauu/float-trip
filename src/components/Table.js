@@ -1,12 +1,18 @@
 import React, {useEffect, useState} from 'react'
 import Countdown from 'react-countdown';
 import $ from "jquery";
+import dayjs from 'dayjs'
+
 
 
 const Table = () => {
     const [ yes, setYes ] = useState(0)
     const [ maybe, setMaybe ] = useState(0)
     const [ no, setNo ] = useState(0)
+    const now = dayjs()
+    const targetDate = dayjs('2023-07-28')
+    const diff = targetDate.diff(now, 'week')
+    
 
     useEffect(() => {
         var numNo = $('.no').length
@@ -21,6 +27,7 @@ const Table = () => {
             <div className='text-center text-5xl text-white flex flex-col sm:text-sm'>
                 <h1>Float Trip July 28th, 2023</h1>
                 <Countdown className='text-center' date='2023-07-28' />
+                <h2>Weeks left: {diff}</h2>
                 <a href='https://www.riverranchresort.com/cabins/lodge-cabins/' target='_blank' className='text-white text-center hover:text-red-600 pb-10'>https://www.riverranchresort.com/</a>
 
             </div>
